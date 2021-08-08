@@ -35,29 +35,29 @@ player.setheading(90)
 playerspeed = 15
 
 def move_left():
-    xcor = player.xcor()
-    xcor -= playerspeed
-    if xcor < -280:
-        xcor = -280
-    player.setx(xcor)
+    x = player.xcor()
+    x -= playerspeed
+    if x < -280:
+        x = -280
+    player.setx(x)
 
 def move_right():
-    xcor = player.xcor()
-    xcor += playerspeed
-    if xcor > 280:
-        xcor = 280
-    player.setx(xcor)
+    x = player.xcor()
+    x += playerspeed
+    if x > 280:
+        x = 280
+    player.setx(x)
 
 def move_top():
-    ycor = player.ycor()
-    ycor += playerspeed
-    player.sety(ycor)
+    y = player.ycor()
+    y += playerspeed
+    player.sety(y)
 
 
 def move_down():
-    ycor = player.ycor()
-    ycor -= playerspeed
-    player.sety(ycor)
+    y = player.ycor()
+    y -= playerspeed
+    player.sety(y)
 
 #Create Keyboard bindings
 turtle.listen()
@@ -72,7 +72,26 @@ enemy.color("red")
 enemy.shape("square")
 enemy.penup()
 enemy.speed(0)
+enemy.setposition(-200,250)
+enemyspeed = 3
 
+#-----------------------
+#      Main game 
+#-----------------------
+while True:
+
+    #move enemy
+    x = enemy.xcor()
+    x += enemyspeed
+    enemy.setx(x)
+
+    if enemy.xcor() > 280 or  enemy.xcor() < -280 :
+        y = enemy.ycor()
+        y -=40
+        enemyspeed *= -1
+        enemy.sety(y)
+
+    
 
 
 delay = input("Pressione enter para sair")
