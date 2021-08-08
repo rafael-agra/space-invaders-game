@@ -10,7 +10,7 @@ wn.title("Space Invaders")
 #Border drawing
 border_caneta = turtle.Turtle()
 border_caneta.speed(0)
-border_caneta.color("red")
+border_caneta.color("white")
 border_caneta.penup()
 border_caneta.setposition(-300,-300)
 border_caneta.pendown()
@@ -23,13 +23,57 @@ for side in range(4):
 border_caneta.hideturtle()
 
 #Create the player
-jogador = turtle.Turtle()
-jogador.color("yellow")
-jogador.shape("triangle")
-jogador.penup()
-jogador.speed(0)
-jogador.setposition(0,-250)
-    
+player = turtle.Turtle()
+player.color("yellow")
+player.shape("triangle")
+player.penup()
+player.speed(0)
+player.setposition(0,-250)
+player.setheading(90)
+
+#Moving player in X and Y axis
+playerspeed = 15
+
+def move_left():
+    xcor = player.xcor()
+    xcor -= playerspeed
+    if xcor < -280:
+        xcor = -280
+    player.setx(xcor)
+
+def move_right():
+    xcor = player.xcor()
+    xcor += playerspeed
+    if xcor > 280:
+        xcor = 280
+    player.setx(xcor)
+
+def move_top():
+    ycor = player.ycor()
+    ycor += playerspeed
+    player.sety(ycor)
+
+
+def move_down():
+    ycor = player.ycor()
+    ycor -= playerspeed
+    player.sety(ycor)
+
+#Create Keyboard bindings
+turtle.listen()
+turtle.onkey(move_left, "Left")
+turtle.onkey(move_right, "Right")
+turtle.onkey(move_top, "Up")
+turtle.onkey(move_down, "Down")
+
+#Create enemy 
+enemy = turtle.Turtle()
+enemy.color("red")
+enemy.shape("square")
+enemy.penup()
+enemy.speed(0)
+
+
 
 delay = input("Pressione enter para sair")
 
