@@ -75,6 +75,8 @@ enemy.speed(0)
 enemy.setposition(-200,250)
 enemyspeed = 3
 
+
+
 #-----------------------
 #      Main game 
 #-----------------------
@@ -90,9 +92,3 @@ while True:
         y -=40
         enemyspeed *= -1
         enemy.sety(y)
-
-    
-
-
-delay = input("Pressione enter para sair")
-
